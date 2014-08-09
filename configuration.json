@@ -1,0 +1,7 @@
+{
+	"fmylife": {
+		"url"          : "http://www.viedemerde.fr/?page=",
+		"domElement"   : ".post.article",
+		"nbToRetrieve" : 200
+	}
+}

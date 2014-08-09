@@ -1,0 +1,16 @@
+{
+  "name": "the-last-200",
+  "version": "0.0.0",
+  "description": "App to retrieve and expose the last 200 fmylife",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Simon MAHE",
+  "license": "AGPL-3.0",
+  "dependencies": {
+    "crawler": "~0.2.6",
+    "underscore.string": "~2.3.3",
+    "nconf": "~0.6.9"
+  }
+}
