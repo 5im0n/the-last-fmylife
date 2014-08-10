@@ -2,6 +2,10 @@
 	"fmylife": {
 		"url"          : "http://www.viedemerde.fr/?page=",
 		"domElement"   : ".post.article",
-		"nbToRetrieve" : 25
+		"nbToRetrieve" : 200
+	},
+	"mongodb": {
+		"host"     : "mongodb://localhost/",
+		"database" : "fmylife"
 	}
 }

@@ -1,19 +1,27 @@
 'use strict';
 
-
 /**
  * Module dependencies.
  */
-var nconf   = require('nconf');
-var Crawler = require('crawler').Crawler;
-var _s      = require('underscore.string');
+var nconf             = require('nconf'); 
+nconf.argv().env().file('configuration.json'); // Load the configuration file
 
-// Load the configuration file //
-nconf.argv().env().file('configuration.json');
+var Crawler           = require('crawler').Crawler;
+var _s                = require('underscore.string');
+var moment            = require('moment');
+var database          = require('./util/database')
+var storiesController = require('./controllers/stories');
+
 
 
 var nbStoriesCrawled = 0; // The number of crawle stories
 var currentCrawlingPage = 0; // The current page being crawl
+
+moment.locale('fr'); // Set the moment locale to Fr
+
+
+// ---------------------------------------------------------- //
+// ---------------------------------------------------------- //
 
 
 
@@ -22,23 +30,20 @@ var currentCrawlingPage = 0; // The current page being crawl
  */
 var c = new Crawler({
 
-	"maxConnections": 10,
-	"forceUTF8": true,
+	'maxConnections': 10,
+	'forceUTF8': true,
 
-	"callback": function(error, result, $){
+	'callback': function(error, result, $){
 
-		//console.log(error);
-		//console.log(result);
-
-		//console.log(error);
-		//return new Error("Error appends");
 
 		var nbItemsToParseInThePage = $(nconf.get('fmylife:domElement')).length; // Nb of stories to parse in the current page
 		var nbItemsCrawledInThePage = 0; // Number of stories who have been parse in the current page 
 
 		
-		// Loop on each DOM item element // 
-		$(nconf.get('fmylife:domElement')).each(function(i, item){
+		/**
+		 * Loop on each DOM storie elements
+		 */
+		$(nconf.get('fmylife:domElement')).each(function(i, item) {
 
 			// If the number of requested stories isn't reach parse it //
 			if(nbStoriesCrawled < nconf.get('fmylife:nbToRetrieve')) {
@@ -47,35 +52,40 @@ var c = new Crawler({
 				nbItemsCrawledInThePage++;
 
 
-				// Create the storie //
+				// Create the storie object //
 				var storie = {};
 
 				// Retrieve the id and the text //
 				storie.id = item.id;
-				storie.text = $(this).find('p:first').text();
+				storie.content = $(this).find('p:first').text();
 
 				// Retrieve the date and the Author //
-				var dirtyString = $(this).find('p:last').text();
-				var reg = /Le|à|Ã/i;
+				var dirtyString = $(this).find('div.right_part p:nth-child(2)').text();
 
 				storie.author = _s.clean(_s.strRight(dirtyString, '- par'));
-				storie.date = _s.clean(_s.strLeft(dirtyString, ' -')).replace(reg, '');
+				storie.date = moment(_s.clean(_s.strLeft(dirtyString, ' -')), 'DD/MM/YYYY HH:mm');
 
 
-				// Crawl the next page if the number of requested stories is not reached //
+				// Persist the storie in the database //
+				storiesController.persist(storie);
+
+
+				// Crawl the next page if the number of requested stories isn't reach //
 				if(nbStoriesCrawled < nconf.get('fmylife:nbToRetrieve') && nbItemsToParseInThePage === nbItemsCrawledInThePage){
 					currentCrawlingPage++;
-					console.log('# Crawing the next page: '+currentCrawlingPage);
+					console.log('### Crawing the next page: '+currentCrawlingPage);
 					c.queue(nconf.get('fmylife:url')+currentCrawlingPage);
 				}
-
-				console.log(nbStoriesCrawled);
 			}
 
 		});
 	},
 
-	onDrain: function(){
+
+	/**
+	 * Display message when the crawler has finished its work
+	 */
+	onDrain: function() {
 		console.log('### The requested number of fmylife stories have been crawled ###');
 	}
 
@@ -83,6 +93,9 @@ var c = new Crawler({
 });
 
 
-// Queue just one URL, with default callback
-console.log("### Crawler starting ###");
+// Clear the stories collection before to crawl //
+storiesController.dropAll();
+
+// Start the crawler //
+console.log('### Crawler starting ###');
 c.queue(nconf.get('fmylife:url'));
