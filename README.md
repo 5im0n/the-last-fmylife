@@ -27,6 +27,12 @@ To use this app you need to install:
 
 
 
+## Test
+
+1. Find source code errors with JSHint: `jshint .`
+
+
+
 ## Versioning
 
 This project is maintained under [the Semantic Versioning guidelines](http://semver.org/).

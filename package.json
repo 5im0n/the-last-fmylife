@@ -1,19 +1,41 @@
 {
   "name": "the-last-fmylife",
-  "version": "0.0.0",
+  "version": "0.5.0",
   "description": "App to retrieve and expose the last fmylife stories",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Simon MAHE",
+  "author": "Simon MAHE <mahe.simon@gmail.com>",
   "private": true,
   "license": "AGPL-3.0",
+  "repository": {
+     "type" : "git",
+     "url" : "https://github.com/5im0n/the-last-fmylife"
+  },
   "dependencies": {
     "crawler": "~0.2.6",
     "underscore.string": "~2.3.3",
     "nconf": "~0.6.9",
     "mongoose": "~3.8.14",
     "moment": "~2.8.1"
+  },
+  "devDependencies": {
+    "jshint": "~2.5.3"
+  },
+  "jshintConfig": {
+    "strict"       : true,
+    "unused"       : true,
+    "indent"       : 4,
+    "undef"        : true,
+    "noempty"      : true,
+    "freeze"       : true,
+    "curly"        : true,
+    "latedef"      : true,
+    "maxcomplexity": 15,
+    "trailing"     : true,
+    "devel"        : true,
+    "multistr"     : true,
+    "node"         : true
   }
 }

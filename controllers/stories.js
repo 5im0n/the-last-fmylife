@@ -18,15 +18,15 @@ var Storie = mongoose.model('Storie');
 var persist = function(storie){
 
 	Storie.create(storie, function (err) {
-		if (err) { 
+		if(err) { 
 			throw err;
 		}
-		else{
+		else {
 			console.log('Storie '+storie.id+' correctly save');
 		}
 	});
 
-}
+};
 
 
 /** 
@@ -34,9 +34,14 @@ var persist = function(storie){
  */
 var dropAll = function(){
 	Storie.remove({}, function(err){
-		console.log('Stories collection correctly dropped');
-	})
-}
+		if(err) {
+			throw err;
+		}
+		else {
+			console.log('Stories collection correctly dropped');	
+		}
+	});
+};
 
 exports.persist = persist;
 exports.dropAll = dropAll;

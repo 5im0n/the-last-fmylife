@@ -21,4 +21,4 @@ var storieSchema = new mongoose.Schema({
 
 
 // Create the model for the stories //
-var Storie = module.export = mongoose.model('Storie', storieSchema);
+module.export = mongoose.model('Storie', storieSchema);

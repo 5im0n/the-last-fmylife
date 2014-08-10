@@ -9,7 +9,7 @@ nconf.argv().env().file('configuration.json'); // Load the configuration file
 var Crawler           = require('crawler').Crawler;
 var _s                = require('underscore.string');
 var moment            = require('moment');
-var database          = require('./util/database')
+require('./util/database');
 var storiesController = require('./controllers/stories');
 
 
