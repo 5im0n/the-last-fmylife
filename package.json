@@ -1,7 +1,7 @@
 {
-  "name": "the-last-200",
+  "name": "the-last-fmylife",
   "version": "0.0.0",
-  "description": "App to retrieve and expose the last 200 fmylife",
+  "description": "App to retrieve and expose the last fmylife stories",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
