@@ -1,7 +1,7 @@
 {
   "name": "the-last-fmylife",
   "version": "0.5.0",
-  "description": "App to retrieve and expose the last fmylife stories",
+  "description": "Lightweight app to retrieve (with a web crawler) and expose (with REST API) the last fmylife stories",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -24,6 +24,11 @@
   },
   "devDependencies": {
     "jshint": "~2.5.3"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "crawler": "node crawler.js",
+    "test": "jshint ."
   },
   "jshintConfig": {
     "strict": true,

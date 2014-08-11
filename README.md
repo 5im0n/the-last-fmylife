@@ -1,10 +1,13 @@
 # the-last-fmylife
 
-Lightweight app to retrieve and expose the last fmylife stories. This application is fully developed in JavaScript.
+Lightweight app to retrieve (with a web crawler) and expose (with REST API) the last [fmylife](http://www.viedemerde.fr/) stories. This application is fully developed in JavaScript.
 
 
 
-## Requirements
+## Quick start
+
+
+### Requirements
 
 To use this app you need to install:
 
@@ -13,23 +16,22 @@ To use this app you need to install:
  - [Mongo DB](http://www.mongodb.org/)
 
 
-
-## Quick start
-
 ### Initial setup
 
 1. Clone this project: `git clone git@github.com:5im0n/the-last-fmylife.git`
 2. Install all dependencies with NPM: `npm install`
+3. Go to the `config/configuration.json` file and update it to fit your preferences.
+
 
 ### How to use
 
-1. Crawl and save the last fmylife stories: `node crawler.js`
-
+1. Crawl and save the last fmylife stories with `npm run crawler`
+2. Then to expose the fmylife stories with a REST API run `npm start`. 
 
 
 ## Test
 
-1. Find source code errors with JSHint: `jshint .`
+1. Find source code errors with JSHint: `npm test`
 
 
 

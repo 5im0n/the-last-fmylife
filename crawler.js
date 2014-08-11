@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 var nconf             = require('nconf'); 
-nconf.argv().env().file('configuration.json'); // Load the configuration file
+nconf.argv().env().file('config/configuration.json'); // Load the configuration file
 
 require('./util/database');
 var Crawler           = require('crawler').Crawler;
