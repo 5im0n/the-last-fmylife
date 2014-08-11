@@ -4,7 +4,9 @@
   "description": "Lightweight app to retrieve (with a web crawler) and expose (with REST API) the last fmylife stories",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "crawler": "node crawler.js",
+    "test": "jshint ."
   },
   "author": "Simon MAHE <mahe.simon@gmail.com>",
   "private": true,
@@ -23,12 +25,8 @@
     "underscore": "~1.6.0"
   },
   "devDependencies": {
-    "jshint": "~2.5.3"
-  },
-  "scripts": {
-    "start": "node index.js",
-    "crawler": "node crawler.js",
-    "test": "jshint ."
+    "jshint": "~2.5.3",
+    "mocha": "~1.21.4"
   },
   "jshintConfig": {
     "strict": true,
@@ -43,6 +41,14 @@
     "trailing": true,
     "devel": true,
     "multistr": true,
-    "node": true
+    "node": true,
+    "globals"   : {
+      "describe"   : false,
+      "it"         : false,
+      "before"     : false,
+      "beforeEach" : false,
+      "after"      : false,
+      "afterEach"  : false
+    }
   }
 }

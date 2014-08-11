@@ -3,7 +3,7 @@
  * Copyright 2014 Simon MAHÉ <mahe.simon@gmail.com>
  * Licensed under AGPL-3.0 (https://www.gnu.org/licenses/agpl.txt)
  */
- 
+
 'use strict';
 
 /**
@@ -36,7 +36,7 @@ server.use(restify.bodyParser());
  * @return The server API name and version
  */
 function getHome(req, res, next) {
-	res.json({ name: nconf.get('server-api:name'), version: nconf.get('server-api:version') });
+	res.json(200, { name: nconf.get('server-api:name'), version: nconf.get('server-api:version') });
 	return next();
 }
 
