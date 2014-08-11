@@ -2,6 +2,8 @@
 
 Lightweight app to retrieve (with a web crawler) and expose (with REST API) the last [fmylife](http://www.viedemerde.fr/) stories. This application is fully developed in JavaScript.
 
+[![devDependency Status](https://david-dm.org/5im0n/the-last-fmylife.svg?style=flat)](https://david-dm.org/5im0n/the-last-fmylife#info=dependencies)
+
 
 
 ## Quick start
@@ -26,7 +28,36 @@ To use this app you need to install:
 ### How to use
 
 1. Crawl and save the last fmylife stories with `npm run crawler`
-2. Then to expose the fmylife stories with a REST API run `npm start`. 
+2. Then to expose the fmylife stories with a REST API run `npm start`.
+
+
+### API documentation
+
+Fetch the stories `/api/posts`. You can use params: author, from and to like: `/api/posts?author=simon&from=2014-01-01&to=2014-12-31`
+```json
+{
+	"posts": [
+		{
+			"id": 1,
+			"content" : "fmylife content",
+			"date": "2014-01-01 00:00",
+			"author": "Genius"
+		}
+	],
+	"count": 1
+}
+```
+Fetch a story with its id `/api/posts/:id`
+```json
+{
+	"post": {
+		"id": 1,
+		"content" : "fmylife content",
+		"date": "2014-01-01 00:00",
+		"author": "Genius"
+	}
+}
+```
 
 
 ## Test
