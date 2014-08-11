@@ -19,7 +19,7 @@ var storieSchema = new mongoose.Schema({
 	author  : { type: String, default: '' }
 });
 
-// All the fields requested //
+// All the fields requested expect _id //
 var fields = '-_id id content date author';
 
 

@@ -19,7 +19,8 @@
     "nconf": "~0.6.9",
     "mongoose": "~3.8.14",
     "moment": "~2.8.1",
-    "restify": "~2.8.2"
+    "restify": "~2.8.2",
+    "underscore": "~1.6.0"
   },
   "devDependencies": {
     "jshint": "~2.5.3"

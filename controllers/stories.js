@@ -3,8 +3,12 @@
 /**
  * Module dependencies.
  */
+var restify  = require('restify');
 var mongoose = require('mongoose');
-var Storie = mongoose.model('Storie');
+var _        = require('underscore');
+var Storie   = mongoose.model('Storie');
+var nconf    = require('nconf');
+var moment   = require('moment');
 
 
 // ---------------------------------------------------------- //
@@ -13,7 +17,7 @@ var Storie = mongoose.model('Storie');
 
 
 /** 
- * Persist a stories into the database
+ * Persist a storie into the database
  */
 function persist(storie){
 
@@ -31,11 +35,38 @@ function persist(storie){
 
 
 /** 
- * Get the stories from the database
+ * Get stories from the database
  */
 function getStories(req, res, next) {
-	res.json({ message: "All the posts" });
-	return next();
+	
+	var query = {};
+
+	// Build the query //
+	_.each(req.params, function(value, index){
+
+		if(index === 'author'){
+			query.author = value;
+		}
+		else if(index === 'from'){
+			query.date = {$gte: moment(value, 'YYYY-MM-DD').toDate() };
+		}
+		else if(index === 'to'){
+			query.date.$lt = moment(value, 'YYYY-MM-DD').toDate();
+		}
+
+	});
+
+
+	Storie.find(query, Storie.fields, { limit: nconf.get('fmylife:nbToRetrieve') }, function(err, stories) { 
+		if(err) {
+			return next(new restify.InternalError('Error occur'));
+		}
+		else {
+			console.log('Stories requested');
+			res.json(200, { posts: stories, count: _.size(stories) });
+			return next();
+		}
+	});
 }
 
 
@@ -46,14 +77,14 @@ function getStories(req, res, next) {
 function getStory(req, res, next) {
 
 	var query = {id: req.params.id};
-	
+
 	Storie.findOne(query, Storie.fields, function(err, storie) { 
 		if(err) {
-			throw err;
+			return next(new restify.InternalError('Error occur'));
 		}
 		else {
 			console.log('Storie '+query.id+' requested');
-			res.json({ post: storie });
+			res.json(200, { post: storie });
 			return next();
 		}
 	});
@@ -76,7 +107,7 @@ function dropAll() {
 }
 
 
-exports.persist = persist;
+exports.persist    = persist;
 exports.getStories = getStories;
-exports.getStory = getStory;
-exports.dropAll = dropAll;
+exports.getStory   = getStory;
+exports.dropAll    = dropAll;
