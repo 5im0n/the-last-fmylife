@@ -4,6 +4,13 @@
 		"domElement"   : ".post.article",
 		"nbToRetrieve" : 200
 	},
+	"server-api": {
+		"name"    : "fmylife-api",
+		"url"     : "192.168.182.129",
+		"port"    : 8081,
+		"version" : "1.0.0",
+		"path"    : "/api"
+	},
 	"mongodb": {
 		"host"     : "mongodb://localhost/",
 		"database" : "fmylife"

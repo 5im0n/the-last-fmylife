@@ -6,10 +6,10 @@
 var nconf             = require('nconf'); 
 nconf.argv().env().file('configuration.json'); // Load the configuration file
 
+require('./util/database');
 var Crawler           = require('crawler').Crawler;
 var _s                = require('underscore.string');
 var moment            = require('moment');
-require('./util/database');
 var storiesController = require('./controllers/stories');
 
 

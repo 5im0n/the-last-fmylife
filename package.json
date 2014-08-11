@@ -10,32 +10,34 @@
   "private": true,
   "license": "AGPL-3.0",
   "repository": {
-     "type" : "git",
-     "url" : "https://github.com/5im0n/the-last-fmylife"
+    "type": "git",
+    "url": "https://github.com/5im0n/the-last-fmylife"
   },
   "dependencies": {
     "crawler": "~0.2.6",
     "underscore.string": "~2.3.3",
     "nconf": "~0.6.9",
     "mongoose": "~3.8.14",
-    "moment": "~2.8.1"
+    "moment": "~2.8.1",
+    "restify": "~2.8.2",
+    "underscore": "~1.6.0"
   },
   "devDependencies": {
     "jshint": "~2.5.3"
   },
   "jshintConfig": {
-    "strict"       : true,
-    "unused"       : true,
-    "indent"       : 4,
-    "undef"        : true,
-    "noempty"      : true,
-    "freeze"       : true,
-    "curly"        : true,
-    "latedef"      : true,
+    "strict": true,
+    "unused": true,
+    "indent": 4,
+    "undef": true,
+    "noempty": true,
+    "freeze": true,
+    "curly": true,
+    "latedef": true,
     "maxcomplexity": 15,
-    "trailing"     : true,
-    "devel"        : true,
-    "multistr"     : true,
-    "node"         : true
+    "trailing": true,
+    "devel": true,
+    "multistr": true,
+    "node": true
   }
 }
