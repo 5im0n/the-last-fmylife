@@ -6,7 +6,11 @@
   "scripts": {
     "start": "node index.js",
     "crawler": "node crawler.js",
-    "test": "jshint ."
+    "test": "mocha -R list test/*.js && jshint ."
+  },
+  "bin":{
+    "mocha": "./node_modules/.bin/mocha",
+    "jshint": "./node_modules/.bin/jshint"
   },
   "author": "Simon MAHE <mahe.simon@gmail.com>",
   "private": true,

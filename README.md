@@ -27,7 +27,7 @@ To use this app you need to install:
 
 ### How to use
 
-1. Crawl and save the last fmylife stories with `npm run crawler`
+1. Retrieve (with the web crawler) and save the last fmylife stories with `npm run crawler`
 2. Then to expose the fmylife stories with a REST API run `npm start`.
 
 
@@ -62,7 +62,16 @@ Fetch a story with its id `/api/posts/:id`
 
 ## Test
 
-1. Find source code errors with JSHint: `npm test`
+1. First launch the server `npm start`
+2. Then to test the API server and find source code errors just run `npm test`
+
+
+
+## Changelog
+
+ - **0.5.0**: Web crawler to retrieve the fmylife stories
+ - **0.9.0**: Server API to expose the fmylife stories
+ - **1.0.0**: Add tests
 
 
 
