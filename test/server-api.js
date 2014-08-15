@@ -14,7 +14,7 @@ var nconf             = require('nconf');
 var restify           = require('restify');
 var assert            = require('assert');
 var _                 = require('underscore');
-var serverAPI         = require('../server-api');
+var serverAPI         = require('../util/server-api');
 var storiesController = require('../controllers/stories');
 
 

@@ -10,7 +10,7 @@
  * Module dependencies.
  */
 var nconf   = require('nconf'); 
-var server = require('./server-api');
+var server = require('./util/server-api');
 
 
 // ---------------------------------------------------------- //

@@ -12,9 +12,9 @@
 var nconf   = require('nconf'); 
 nconf.argv().env().file('config/configuration.json'); // Load the configuration file
 
-require('./util/database');
+require('./database');
 var restify           = require('restify');
-var storiesController = require('./controllers/stories');
+var storiesController = require('../controllers/stories');
 
 
 // ---------------------------------------------------------- //

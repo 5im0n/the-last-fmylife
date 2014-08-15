@@ -1,11 +1,11 @@
 {
   "name": "the-last-fmylife",
-  "version": "0.5.0",
+  "version": "1.0.0",
   "description": "Lightweight app to retrieve (with a web crawler) and expose (with REST API) the last fmylife stories",
   "main": "index.js",
   "scripts": {
     "start": "node app",
-    "crawler": "node crawler",
+    "crawler": "node util/crawler",
     "test": "mocha -R list test/*.js && jshint ."
   },
   "bin":{
