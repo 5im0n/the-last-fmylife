@@ -51,10 +51,5 @@ server.get(nconf.get('server-api:path')+'/posts/:id', storiesController.getStory
 
 
 
-
-/**
- * Launch the server
- */
-server.listen(nconf.get('server-api:port'), nconf.get('server-api:url'), function () {
-	console.log('%s listening at %s', server.name, server.url);
-});
+// Export the server //
+module.exports = server;

@@ -32,12 +32,12 @@ mongoose.connect(dbURI);
 
 // When connected //
 mongoose.connection.on('connected', function() {
-	console.log('Mongoose connection open to ' + dbURI);
+	console.log('Mongoose connection open to %s', dbURI);
 });
 
 // If the connection throws an error //
 mongoose.connection.on('error', function(err) {
-	console.log('Mongoose connection error: ' + err);
+	console.log('Mongoose connection error: %s', err);
 });
 
 // When the connection is disconnected //

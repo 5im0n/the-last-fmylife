@@ -25,7 +25,7 @@ var moment   = require('moment');
 /** 
  * Persist a storie into the database
  */
-function persist(storie){
+exports.persist = function(storie){
 
 	Storie.create(storie, function (err) {
 		if(err) { 
@@ -36,14 +36,14 @@ function persist(storie){
 		}
 	});
 
-}
+};
 
 
 
 /** 
  * Get stories from the database
  */
-function getStories(req, res, next) {
+exports.getStories = function(req, res, next) {
 	
 	var query = {};
 
@@ -73,14 +73,14 @@ function getStories(req, res, next) {
 			return next();
 		}
 	});
-}
+};
 
 
 
 /** 
  * Get the story from the database with his ID
  */
-function getStory(req, res, next) {
+exports.getStory = function(req, res, next) {
 
 	var query = {id: req.params.id};
 
@@ -89,19 +89,19 @@ function getStory(req, res, next) {
 			return next(new restify.InternalError('Error occur'));
 		}
 		else {
-			console.log('Storie '+query.id+' requested');
+			console.log('Storie %d requested', query.id);
 			res.json(200, { post: storie });
 			return next();
 		}
 	});
-}
+};
 
 
 
 /** 
  * Drop all stories from the database
  */
-function dropAll() {
+exports.dropAll = function() {
 	Storie.remove({}, function(err){
 		if(err) {
 			throw err;
@@ -110,10 +110,4 @@ function dropAll() {
 			console.log('Stories collection correctly dropped');	
 		}
 	});
-}
-
-
-exports.persist    = persist;
-exports.getStories = getStories;
-exports.getStory   = getStory;
-exports.dropAll    = dropAll;
+};

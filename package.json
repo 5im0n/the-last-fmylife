@@ -4,8 +4,8 @@
   "description": "Lightweight app to retrieve (with a web crawler) and expose (with REST API) the last fmylife stories",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "crawler": "node crawler.js",
+    "start": "node app",
+    "crawler": "node crawler",
     "test": "mocha -R list test/*.js && jshint ."
   },
   "bin":{
@@ -21,12 +21,12 @@
   },
   "dependencies": {
     "crawler": "~0.2.6",
+    "restify": "~2.8.2",
+    "mongoose": "~3.8.14",
+    "underscore": "~1.6.0",
     "underscore.string": "~2.3.3",
     "nconf": "~0.6.9",
-    "mongoose": "~3.8.14",
-    "moment": "~2.8.1",
-    "restify": "~2.8.2",
-    "underscore": "~1.6.0"
+    "moment": "~2.8.1"
   },
   "devDependencies": {
     "jshint": "~2.5.3",

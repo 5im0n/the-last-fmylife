@@ -62,8 +62,7 @@ Fetch a story with its id `/api/posts/:id`
 
 ## Test
 
-1. First launch the server `npm start`
-2. Then to test the API server and find source code errors just run `npm test`
+To test the API server and find source code errors (with JSHint) just run `npm test`
 
 
 

@@ -6,13 +6,13 @@
 	},
 	"server-api": {
 		"name"    : "fmylife-api",
-		"url"     : "192.168.182.129",
+		"url"     : "127.0.0.1",
 		"port"    : 8081,
 		"version" : "1.0.0",
 		"path"    : "/api"
 	},
 	"mongodb": {
-		"host"     : "mongodb://localhost/",
+		"host"     : "mongodb://127.0.0.1/",
 		"database" : "fmylife"
 	}
 }
