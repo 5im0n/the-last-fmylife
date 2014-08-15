@@ -2,6 +2,7 @@
 
 Lightweight app to retrieve (with a web crawler) and expose (with REST API) the last [fmylife](http://www.viedemerde.fr/) stories. This application is fully developed in JavaScript.
 
+[![Build Status](http://img.shields.io/travis/5im0n/the-last-fmylife/master.svg?style=flat-square)](https://travis-ci.org/5im0n/the-last-fmylife)
 [![devDependency Status](https://david-dm.org/5im0n/the-last-fmylife.svg?style=flat)](https://david-dm.org/5im0n/the-last-fmylife#info=dependencies)
 
 
