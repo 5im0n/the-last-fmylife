@@ -9,7 +9,7 @@
 /**
  * Module dependencies.
  */
-var nconf   = require('nconf'); 
+var nconf   = require('nconf');
 nconf.argv().env().file('config/configuration.json'); // Load the configuration file
 
 require('./database');
@@ -27,7 +27,8 @@ var storiesController = require('../controllers/stories');
  */
 var server = restify.createServer({ name: nconf.get('server-api:name'), version: nconf.get('server-api:version') });
 server.use(restify.queryParser());
-server.use(restify.bodyParser());	
+server.use(restify.bodyParser());
+server.use(restify.CORS());
 
 
 
