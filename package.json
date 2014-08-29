@@ -6,9 +6,9 @@
   "scripts": {
     "start": "node app",
     "crawler": "node util/crawler",
-    "test": "mocha -R list test/*.js && jshint ."
+    "test": "mocha -R list test/*.js"
   },
-  "bin":{
+  "bin": {
     "mocha": "./node_modules/.bin/mocha",
     "jshint": "./node_modules/.bin/jshint"
   },
@@ -29,30 +29,10 @@
     "moment": "~2.8.1"
   },
   "devDependencies": {
-    "jshint": "~2.5.3",
-    "mocha": "~1.21.4"
-  },
-  "jshintConfig": {
-    "strict": true,
-    "unused": true,
-    "indent": 4,
-    "undef": true,
-    "noempty": true,
-    "freeze": true,
-    "curly": true,
-    "latedef": true,
-    "maxcomplexity": 15,
-    "trailing": true,
-    "devel": true,
-    "multistr": true,
-    "node": true,
-    "globals"   : {
-      "describe"   : false,
-      "it"         : false,
-      "before"     : false,
-      "beforeEach" : false,
-      "after"      : false,
-      "afterEach"  : false
-    }
+    "mocha": "~1.21.4",
+    "grunt": "~0.4.5",
+    "load-grunt-tasks": "~0.6.0",
+    "grunt-contrib-jshint": "~0.10.0",
+    "grunt-jscs": "~0.6.2"
   }
 }
