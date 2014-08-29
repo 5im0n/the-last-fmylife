@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node app",
     "crawler": "node util/crawler",
-    "test": "mocha -R list test/*.js"
+    "test": "mocha -R list test/*.js && grunt check"
   },
   "bin": {
     "mocha": "./node_modules/.bin/mocha",

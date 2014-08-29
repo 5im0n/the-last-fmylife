@@ -9,7 +9,7 @@
 /**
  * Module dependencies.
  */
-var nconf             = require('nconf'); 
+var nconf             = require('nconf');
 nconf.argv().env().file('config/configuration.json'); // Load the configuration file
 
 require('./database');
@@ -36,23 +36,23 @@ moment.locale('fr'); // Set the moment locale to Fr
  */
 var c = new Crawler({
 
-	'maxConnections': 10,
-	'forceUTF8': true,
+	maxConnections: 10,
+	forceUTF8: true,
 
-	'callback': function(error, result, $){
+	callback: function(error, result, $) {
 
 
 		var nbItemsToParseInThePage = $(nconf.get('fmylife:domElement')).length; // Nb of stories to parse in the current page
-		var nbItemsCrawledInThePage = 0; // Number of stories who have been parse in the current page 
+		var nbItemsCrawledInThePage = 0; // Number of stories who have been parse in the current page
 
-		
+
 		/**
 		 * Loop on each DOM storie elements
 		 */
 		$(nconf.get('fmylife:domElement')).each(function(i, item) {
 
 			// If the number of requested stories isn't reach parse it //
-			if(nbStoriesCrawled < nconf.get('fmylife:nbToRetrieve')) {
+			if (nbStoriesCrawled < nconf.get('fmylife:nbToRetrieve')) {
 
 				nbStoriesCrawled++;
 				nbItemsCrawledInThePage++;
@@ -77,10 +77,10 @@ var c = new Crawler({
 
 
 				// Crawl the next page if the number of requested stories isn't reach //
-				if(nbStoriesCrawled < nconf.get('fmylife:nbToRetrieve') && nbItemsToParseInThePage === nbItemsCrawledInThePage){
+				if (nbStoriesCrawled < nconf.get('fmylife:nbToRetrieve') && nbItemsToParseInThePage === nbItemsCrawledInThePage){
 					currentCrawlingPage++;
-					console.log('### Crawing the next page: '+currentCrawlingPage);
-					c.queue(nconf.get('fmylife:url')+currentCrawlingPage);
+					console.log('### Crawing the next page: ' + currentCrawlingPage);
+					c.queue(nconf.get('fmylife:url') + currentCrawlingPage);
 				}
 			}
 
@@ -95,7 +95,7 @@ var c = new Crawler({
 		console.log('### The requested number of fmylife stories have been crawled ###');
 	}
 
-	
+
 });
 
 
