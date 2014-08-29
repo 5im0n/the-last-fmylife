@@ -67,7 +67,7 @@ Return 204 HTTP
 
 ## Test
 
-To test the API server and find source code errors (with JSHint) just run `npm test`
+To test the API server, find source code errors (with JSHint) and check code style (with JSCS) just run `npm test`
 
 
 

@@ -23,7 +23,7 @@
     "crawler": "~0.2.6",
     "restify": "~2.8.2",
     "mongoose": "~3.8.14",
-    "underscore": "~1.6.0",
+    "underscore": "~1.7.0",
     "underscore.string": "~2.3.3",
     "nconf": "~0.6.9",
     "moment": "~2.8.1"
