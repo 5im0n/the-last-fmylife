@@ -25,14 +25,14 @@ var moment   = require('moment');
 /**
  * Persist a storie into the database
  */
-exports.persist = function(storie){
+exports.persist = function(storie) {
 
-	Storie.create(storie, function (err) {
-		if(err) {
+	Storie.create(storie, function(err) {
+		if (err) {
 			throw err;
 		}
 		else {
-			console.log('Storie '+storie.id+' correctly save');
+			console.log('Storie %d correctly save', storie.id);
 		}
 	});
 
@@ -48,15 +48,15 @@ exports.getStories = function(req, res, next) {
 	var query = {};
 
 	// Build the query //
-	_.each(req.params, function(value, index){
+	_.each(req.params, function(value, index) {
 
-		if(index === 'author'){
+		if (index === 'author'){
 			query.author = value;
 		}
-		else if(index === 'from'){
-			query.date = {$gte: moment(value, 'YYYY-MM-DD').toDate() };
+		else if (index === 'from'){
+			query.date = { $gte: moment(value, 'YYYY-MM-DD').toDate() };
 		}
-		else if(index === 'to'){
+		else if (index === 'to'){
 			query.date.$lt = moment(value, 'YYYY-MM-DD').toDate();
 		}
 
@@ -64,7 +64,7 @@ exports.getStories = function(req, res, next) {
 
 
 	Storie.find(query, Storie.fields, { limit: nconf.get('fmylife:nbToRetrieve') }, function(err, stories) {
-		if(err) {
+		if (err) {
 			return next(new restify.InternalError('Error occur'));
 		}
 		else {
@@ -82,10 +82,10 @@ exports.getStories = function(req, res, next) {
  */
 exports.getStory = function(req, res, next) {
 
-	var query = {id: req.params.id};
+	var query = { id: req.params.id };
 
 	Storie.findOne(query, Storie.fields, function(err, storie) {
-		if(err) {
+		if (err) {
 			return next(new restify.InternalError('Error occur'));
 		}
 		else {
@@ -106,7 +106,7 @@ exports.deleteStory = function(req, res, next) {
 	var query = { id: req.params.id };
 
 	Storie.remove(query, function(err) {
-		if(err) {
+		if (err) {
 			return next(new restify.InternalError('Error occur'));
 		}
 		else {
@@ -123,8 +123,8 @@ exports.deleteStory = function(req, res, next) {
  * Drop all stories from the database
  */
 exports.dropAll = function() {
-	Storie.remove({}, function(err){
-		if(err) {
+	Storie.remove({}, function(err) {
+		if (err) {
 			throw err;
 		}
 		else {

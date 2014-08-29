@@ -3,7 +3,7 @@
  * Copyright 2014 Simon MAHÉ <mahe.simon@gmail.com>
  * Licensed under AGPL-3.0 (https://www.gnu.org/licenses/agpl.txt)
  */
- 
+
 'use strict';
 
 /**
@@ -19,7 +19,7 @@ var mongoose = require('mongoose');
 
 
 // Build the connection URI //
-var dbURI = nconf.get('mongodb:host')+nconf.get('mongodb:database');
+var dbURI = nconf.get('mongodb:host') + nconf.get('mongodb:database');
 
 // Create the database connection //
 mongoose.connect(dbURI);
@@ -48,8 +48,8 @@ mongoose.connection.on('disconnected', function() {
 // If the Node process ends, close the Mongoose connection //
 process.on('SIGINT', function() {
 	mongoose.connection.close(function() {
-    	console.log('Mongoose disconnected');
-    	process.exit(0);
+		console.log('Mongoose disconnected');
+		process.exit(0);
 	});
 });
 

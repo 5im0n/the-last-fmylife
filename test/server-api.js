@@ -27,7 +27,7 @@ var storiesController = require('../controllers/stories');
 describe('Server API', function() {
 
 	// Build API URL //
-	var url = 'http://'+nconf.get('server-api:url')+':'+nconf.get('server-api:port');
+	var url = 'http://' + nconf.get('server-api:url') + ':' + nconf.get('server-api:port');
 
 	// Create the test client //
 	var client = restify.createJsonClient({ url: url, version: '*' });
@@ -42,7 +42,7 @@ describe('Server API', function() {
 
 
 	// Before lauching the test //
-	before(function(done){
+	before(function(done) {
 
 		// Launch the server and save the mock stories //
 		serverAPI.listen(nconf.get('server-api:port'), nconf.get('server-api:url'), function () {
@@ -50,7 +50,7 @@ describe('Server API', function() {
 
 			storiesController.dropAll();
 
-			_.each(mockStories, function(s){
+			_.each(mockStories, function(s) {
 				storiesController.persist(s);
 			});
 
@@ -60,7 +60,7 @@ describe('Server API', function() {
 
 
 	// After the tests was perfomed //
-	after(function(){
+	after(function() {
 		storiesController.dropAll();
 		serverAPI.close();
 	});
@@ -73,7 +73,7 @@ describe('Server API', function() {
 	it('should return a HTTP 200 response', function(done) {
 
 		client.get(nconf.get('server-api:path'), function(err, req, res) {
-			if(err) {
+			if (err) {
 				throw new Error(err);
 			}
 			else {
@@ -90,9 +90,9 @@ describe('Server API', function() {
 	 */
 	it('should get the correct story with his id', function(done) {
 
-		client.get(nconf.get('server-api:path')+'/posts/120592', function(err, req, res, data) {
+		client.get(nconf.get('server-api:path') + '/posts/120592', function(err, req, res, data) {
 
-			if(err) {
+			if (err) {
 				throw new Error(err);
 			}
 			else {
@@ -110,9 +110,9 @@ describe('Server API', function() {
 	 */
 	it('should return stories create by author Simon', function(done) {
 
-		client.get(nconf.get('server-api:path')+'/posts?author=Simon', function(err, req, res, data) {
+		client.get(nconf.get('server-api:path') + '/posts?author=Simon', function(err, req, res, data) {
 
-			if(err) {
+			if (err) {
 				throw new Error(err);
 			}
 			else {
@@ -129,9 +129,9 @@ describe('Server API', function() {
 	 */
 	it('should return stories create from :date to :date', function(done) {
 
-		client.get(nconf.get('server-api:path')+'/posts?from=2014-08-01&to=2014-12-31', function(err, req, res, data) {
+		client.get(nconf.get('server-api:path') + '/posts?from=2014-08-01&to=2014-12-31', function(err, req, res, data) {
 
-			if(err) {
+			if (err) {
 				throw new Error(err);
 			}
 			else {
@@ -148,16 +148,16 @@ describe('Server API', function() {
 	 */
 	it('should delete story with his id', function(done) {
 
-		client.del(nconf.get('server-api:path')+'/posts/120592', function(err) {
+		client.del(nconf.get('server-api:path') + '/posts/120592', function(err) {
 			assert.ifError(err);
 
-			if(err) {
+			if (err) {
 				throw new Error(err);
 			}
 			else {
-				client.get(nconf.get('server-api:path')+'/posts/120592', function(err, req, res, data) {
+				client.get(nconf.get('server-api:path') + '/posts/120592', function(err, req, res, data) {
 
-					if(err) {
+					if (err) {
 						throw new Error(err);
 					}
 					else {
