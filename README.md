@@ -34,7 +34,8 @@ To use this app you need to install:
 
 ### API documentation
 
-Fetch the stories `/api/posts`. You can use params: author, from and to like: `/api/posts?author=simon&from=2014-01-01&to=2014-12-31`
+- Fetch the stories: GET `/api/posts`.
+You can use params: author, from and to like: `/api/posts?author=simon&from=2014-01-01&to=2014-12-31`
 ```json
 {
 	"posts": [
@@ -48,7 +49,7 @@ Fetch the stories `/api/posts`. You can use params: author, from and to like: `/
 	"count": 1
 }
 ```
-Fetch a story with its id `/api/posts/:id`
+- Fetch a story with its id: GET `/api/posts/:id`
 ```json
 {
 	"post": {
@@ -59,7 +60,10 @@ Fetch a story with its id `/api/posts/:id`
 	}
 }
 ```
-
+- Delete a story with its id: DELETE `/api/posts/:id`
+```
+Return 204 HTTP
+```
 
 ## Test
 

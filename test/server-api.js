@@ -47,7 +47,7 @@ describe('Server API', function() {
 		// Launch the server and save the mock stories //
 		serverAPI.listen(nconf.get('server-api:port'), nconf.get('server-api:url'), function () {
 			console.log('%s listening at %s', serverAPI.name, serverAPI.url);
-			
+
 			storiesController.dropAll();
 
 			_.each(mockStories, function(s){
@@ -89,7 +89,7 @@ describe('Server API', function() {
 	 * Test #2 - Server API return the story with his ID
 	 */
 	it('should get the correct story with his id', function(done) {
-			
+
 		client.get(nconf.get('server-api:path')+'/posts/120592', function(err, req, res, data) {
 
 			if(err) {
@@ -137,6 +137,34 @@ describe('Server API', function() {
 			else {
 				assert.equal(data.count, 2);
 				done();
+			}
+		});
+	});
+
+
+
+	/**
+	 * Test #5 - Server API delete the stories with his ID
+	 */
+	it('should delete story with his id', function(done) {
+
+		client.del(nconf.get('server-api:path')+'/posts/120592', function(err) {
+			assert.ifError(err);
+
+			if(err) {
+				throw new Error(err);
+			}
+			else {
+				client.get(nconf.get('server-api:path')+'/posts/120592', function(err, req, res, data) {
+
+					if(err) {
+						throw new Error(err);
+					}
+					else {
+						assert.equal(data.post, null);
+						done();
+					}
+				});
 			}
 		});
 	});

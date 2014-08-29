@@ -49,6 +49,7 @@ function getHome(req, res, next) {
 server.get(nconf.get('server-api:path'), getHome);
 server.get(nconf.get('server-api:path')+'/posts', storiesController.getStories);
 server.get(nconf.get('server-api:path')+'/posts/:id', storiesController.getStory);
+server.del(nconf.get('server-api:path')+'/posts/:id', storiesController.deleteStory);
 
 
 
