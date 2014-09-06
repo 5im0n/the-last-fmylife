@@ -4,6 +4,7 @@ Lightweight app to retrieve (with a web crawler) and expose (with REST API) the 
 
 [![Build Status](http://img.shields.io/travis/5im0n/the-last-fmylife/master.svg?style=flat-square)](https://travis-ci.org/5im0n/the-last-fmylife)
 [![devDependency Status](https://david-dm.org/5im0n/the-last-fmylife.svg?style=flat)](https://david-dm.org/5im0n/the-last-fmylife#info=dependencies)
+[![Code Climate](https://codeclimate.com/github/5im0n/the-last-fmylife/badges/gpa.svg?style=flat)](https://codeclimate.com/github/5im0n/the-last-fmylife)
 
 
 
